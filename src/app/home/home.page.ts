@@ -13,7 +13,8 @@ export class HomePage {
   apellido: string = "";
   usuario: string = "";
   password: string = "";  
-  //eduacion: string = "";
+  educacion: string = "";
+  fecha_nacimiento: string = "";
   
 
   
@@ -36,7 +37,7 @@ export class HomePage {
 //Método ingresar
 ingresar(){
 
-  if(this.nombre.length == 0 || this.apellido.length == 0 || this.usuario.length == 0 || this.password.length == 0){
+  if(this.nombre.length == 0 || this.apellido.length == 0 || this.usuario.length == 0 || this.password.length == 0 || this.educacion.length == 0 || this.fecha_nacimiento.length==0){
     this.mensajeActual("Los campos no pueden estar vacíos");
   }
   else{

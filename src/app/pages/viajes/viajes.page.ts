@@ -11,32 +11,32 @@ export class ViajesPage implements OnInit {
   libros = [
     {
       titulo: 'Más allá del abismo',
-      autor: 'William Gibson',
-      anio: 1984,
+      autor: 'Gustavo García',
+      anio: 2022,
       portada: 'assets/img/libros/abismo.jpg'
     },
     {
       titulo: 'La máquina del tiempo',
-      autor: 'Philip K. Dick',
-      anio: 1984,
+      autor: 'H. G. Wells',
+      anio: 1895,
       portada: 'assets/img/libros/maquina_tiempo.jpg'
     },
     {
       titulo: 'Gnosis',
-      autor: 'Richard Morgas',
-      anio: 1984,
+      autor: 'Andrea Nieto',
+      anio: 2022,
       portada: 'assets/img/libros/gnosis.jpg'
     },  
     {
-      titulo: 'El final de una eternidad',
-      autor: 'Richard Morgas',
-      anio: 1984,
+      titulo: 'El fin de una eternidad',
+      autor: 'Isaac Asimov',
+      anio: 1955,
       portada: 'assets/img/libros/eternidad.jpg'
     },
     {
       titulo: 'Diario de estrellas',
-      autor: 'Richard Morgas',
-      anio: 1984,
+      autor: 'Stanislaw Lem',
+      anio: 1957,
       portada: 'assets/img/libros/diario_estrellas.jpg'
     },
     

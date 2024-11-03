@@ -1,5 +1,7 @@
+
+/*Fondo de pantalla especifico para inicio de sesión*/
 ion-content {
-    --background: none; /* Elimina cualquier fondo global */
+    --background: none; 
     background-image: url('../../assets/img/fondo/fondologin.jpg');  
     background-repeat: no-repeat;
     background-position: center center;
@@ -12,10 +14,10 @@ ion-content {
 }
 
 
-
+/*Fondo semitransparente color rosado claro para tarjeta*/
 ion-card {
-    background-color: #f9b5f8; /* Fondo semitransparente */
-    backdrop-filter: blur(5px); /* Opcional: agrega un efecto de desenfoque detrás */
+    background-color: #f9b5f8; 
+    backdrop-filter: blur(5px); 
     box-shadow: none;
     border-radius: 10%;
     margin: 10%  auto;
@@ -34,34 +36,35 @@ ion-card {
     animation: trasladarLogoIn 5s alternate;  
   }
 
+  /*Características de elementos ion card*/
   ion-card ion-input {
-    --background: transparent; /* Fondo transparente */
-    color: black; /* Color de texto en naranja oscuro */
+    --background: transparent; 
+    color: black; 
   }
 
   ion-card input {
-    background-color: transparent; /* Fondo transparente para navegadores que no usan variables CSS */
-    color: black; /* Color de texto en naranja oscuro */
+    background-color: transparent; 
+    color: black; 
   }
 
   ion-card ion-label {
-    --background: #f9b5f8; /* Fondo transparente */
-    color: black /* Color de texto en naranja oscuro */
+    --background: #f9b5f8; 
+    color: black 
   }
   
   ion-card label {
-    background-color: #f9b5f8; /* Fondo transparente para navegadores que no usan variables CSS */
-    color: black; /* Color de texto en naranja oscuro */    
+    background-color: #f9b5f8; 
+    color: black; 
   }
 
   ion-card ion-item {
-    --background: #f9b5f8; /* Fondo transparente */
-    color: black; /* Color de texto en naranja oscuro */
+    --background: #f9b5f8; 
+    color: black; 
   }
 
   ion-card ion-button.login-button {
-    --background: black; /* Fondo en naranja oscuro */
-    color: white; /* Texto en blanco para buen contraste */
+    --background: black; 
+    color: white; 
   }
 
   ion-card ion-button.boton-registro {    
@@ -82,6 +85,7 @@ ion-card {
     color: black;   
  }
 
+ /*Animación para logo de login*/
  @keyframes trasladarLogoIn {
   0% {
     transform: translateX(-150px);

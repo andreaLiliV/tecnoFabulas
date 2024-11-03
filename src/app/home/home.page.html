@@ -1,10 +1,4 @@
 
-<!--<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Registro</ion-title>    
-  </ion-toolbar>
-</ion-header>-->
-
 <ion-content [fullscreen]="true">
   
     <ion-header class="alinear"> 
@@ -45,14 +39,14 @@
     <!--Nivel Educación-->
     <ion-item>
       <ion-label>Nivel de Educacion</ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="educacion">
         <ion-select-option value="option1">Básica</ion-select-option>
         <ion-select-option value="option2">Media</ion-select-option>
         <ion-select-option value="option3">Superior</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <!--Fecha Nacimiento-->
+    <!--Fecha Nacimiento---(opcional)-->
     <ion-item>
       <ion-label>Fecha Nacimiento</ion-label>
     </ion-item>  
@@ -60,7 +54,7 @@
     <!--Angular Material-->
     <mat-form-field>
       <mat-label>Fecha Nacimiento</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="fecha_nacimiento">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

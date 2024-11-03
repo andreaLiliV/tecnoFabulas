@@ -11,20 +11,20 @@ export class DistopiaPage implements OnInit {
   libros = [
     {
       titulo: 'Farenheit 451',
-      autor: 'William Gibson',
-      anio: 1984,
+      autor: 'Ray Bradbury',
+      anio: 1953,
       portada: 'assets/img/libros/fahrenheit.jpg'
     },
     {
       titulo: '1984',
-      autor: 'Philip K. Dick',
-      anio: 1984,
+      autor: 'George Orwell',
+      anio: 1949,
       portada: 'assets/img/libros/orwell.jpg'
     },
     {
       titulo: 'Soy leyenda',
-      autor: 'Richard Morgas',
-      anio: 1984,
+      autor: 'Richard Matheson',
+      anio: 1954,
       portada: 'assets/img/libros/leyenda.jpg'
     },    
     
