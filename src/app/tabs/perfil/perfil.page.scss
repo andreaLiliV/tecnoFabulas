@@ -1,0 +1,66 @@
+.alinear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-direction: row;
+    background-color: #BF026D;
+    height: 60px;
+}
+
+ion-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.log {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding-top: 10%;
+}
+
+.log img {
+    width: 30%; 
+    animation: trasladarLogoIn 5s alternate; 
+}
+
+.titulo {
+    font-family: 'Franklin Gothic Medium';
+    color:white;  
+    display: flex;
+    justify-content: center;
+}
+
+.list-content {    
+    margin: 20%  auto;
+    width: 90%; 
+    border-radius: 15px;
+}
+
+.rounded-list {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #BF026D;
+}
+
+.custom-list {
+    --background: #BF026D;
+    color: white;
+}
+
+//Animación para Logo
+@keyframes trasladarLogoIn {
+    0% {
+      transform: translateX(-150px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+
+
+

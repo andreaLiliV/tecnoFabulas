@@ -1,0 +1,49 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <app-logo-fabulas></app-logo-fabulas>
+   <!-- <ion-title color="light">perfil</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content [fullscreen]="true">
+
+  <ion-header class="alinear">
+    <app-logo-fabulas></app-logo-fabulas>    
+    <ion-title>PERFIL</ion-title>
+    <app-cerrar-sesion></app-cerrar-sesion>
+  </ion-header>
+
+  <div class="log">
+
+    <!--Logo para animación-->
+    <img src="../../assets/img/logo/logo.png">
+   </div>
+
+   <h1 class="titulo">Usuario: {{usuarioRecibido}} </h1>
+  <div class="list-content">
+
+    <ion-list style="background-color: #BF026D;" class="rounded-list">
+      <ion-item class="custom-list">
+        <ion-icon aria-hidden="true" name="reader" slot="start" color="light"></ion-icon>
+        <ion-label>Mis datos</ion-label>
+      </ion-item>
+
+      <ion-item class="custom-list">
+        <ion-icon aria-hidden="true" name="book" slot="start" color="light"></ion-icon>
+        <ion-label>Mis lecturas</ion-label>
+      </ion-item>
+
+      <ion-item class="custom-list">
+        <ion-icon aria-hidden="true" name="heart" slot="start" color="light"></ion-icon>
+        <ion-label>Calificación<noscript></noscript></ion-label>
+      </ion-item>
+      
+      <ion-item class="custom-list">
+        <ion-icon aria-hidden="true" name="thumbs-up" slot="start" color="light"></ion-icon>
+        <ion-label>Síguenos</ion-label>
+      </ion-item>
+
+    </ion-list>
+</div>
+
+</ion-content>

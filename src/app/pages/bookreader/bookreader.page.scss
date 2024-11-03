@@ -1,0 +1,44 @@
+ion-content {
+    --background: none; /* Elimina cualquier fondo global */    
+}
+
+.alinear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-direction: row;
+    background-color: #BF026D;
+    height: 60px;
+  }
+  
+  ion-title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+ion-card {    
+    backdrop-filter: blur(5px); /* Opcional: agrega un efecto de desenfoque detrás */
+    box-shadow: none;
+    border: 5px solid #BF026D;
+    border-radius: 10%;
+    margin: 10%  auto;
+    width: 90%; 
+}
+
+.chip-container {
+    display: flex;
+    justify-content: center;    
+}
+
+.custom-chip {
+    --background: black;
+    --color: white;
+}
+
+.contenido-libro {    
+    margin: 20%  auto;
+    width: 90%; 
+    text-align: justify;
+    
+}

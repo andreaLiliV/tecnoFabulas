@@ -1,0 +1,36 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <app-logo-fabulas></app-logo-fabulas>
+    <!--<ion-title color="light">Géneros</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content [fullscreen]="true">
+
+  
+    <ion-header class="alinear">
+      <app-logo-fabulas></app-logo-fabulas>    
+      <ion-title>GÉNEROS</ion-title>
+      <app-cerrar-sesion></app-cerrar-sesion>
+    </ion-header>
+
+
+  <div class="flex-categorias">
+    <ion-card>      
+      <img src="../../../assets/img/categoria/cyberpunk.jpg" (click)="listarCyberpunk()">      
+      <h2 class="titulo-img">CYBERPUNK</h2>    
+    </ion-card>
+    <ion-card>
+      <img src="../../../assets/img/categoria/steampunk.jpg" (click)="listarSteampunk()">
+      <h2 class="titulo-img">STEAMPUNK</h2>
+    </ion-card>
+    <ion-card>
+      <img src="../../../assets/img/categoria/distopia.jpg" (click)="listarDistopia()">
+      <h2 class="titulo-img">DISTOPÍA</h2>
+    </ion-card>
+    <ion-card>
+      <img src="../../../assets/img/categoria/viajes.jpg" (click)="listarViajes()">
+      <h2 class="titulo-img">VIAJES EN EL TIEMPO</h2>
+    </ion-card>
+  </div>
+</ion-content>

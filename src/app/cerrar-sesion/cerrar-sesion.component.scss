@@ -1,0 +1,16 @@
+.boton {
+    display: flex;    
+    /*align-items: flex-end ;*/
+    justify-content: center;    
+}
+
+
+.logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-right: 8px;    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

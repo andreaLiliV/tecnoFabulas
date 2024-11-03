@@ -1,20 +1,81 @@
-<ion-header [translucent]="true">
+
+<!--<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Registro</ion-title>    
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+    <ion-header class="alinear"> 
+      <app-logo-fabulas></app-logo-fabulas>          
+      <ion-title>REGISTRO</ion-title> 
+      <app-cerrar-sesion></app-cerrar-sesion>         
+    </ion-header>
+  
+  <h1 class="titulo">Bienvenido a TecnoFábulas!</h1>
+  <ion-card class="scale-card">    
+    <ion-card-content>     
+    
+    <!--Nombre-->  
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <!--Apellido-->
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+    </ion-item>
+
+    <!--Usuario-->
+    <ion-item>
+      <ion-label position="floating">usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+    </ion-item>
+
+    <!--Contraseña-->
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+
+    <!--Nivel Educación-->
+    <ion-item>
+      <ion-label>Nivel de Educacion</ion-label>
+      <ion-select>
+        <ion-select-option value="option1">Básica</ion-select-option>
+        <ion-select-option value="option2">Media</ion-select-option>
+        <ion-select-option value="option3">Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--Fecha Nacimiento-->
+    <ion-item>
+      <ion-label>Fecha Nacimiento</ion-label>
+    </ion-item>  
+
+    <!--Angular Material-->
+    <mat-form-field>
+      <mat-label>Fecha Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+     <!-- Botón Ingresar Datos -->
+     <ion-button expand="block" fill="clear" shape="round" class="registro-button" (click)="ingresar()">Ingresar datos</ion-button> 
+
+
+    </ion-card-content>   
+  </ion-card>
+  </ion-content> 
+    
+      
+
+     
+
+  
+

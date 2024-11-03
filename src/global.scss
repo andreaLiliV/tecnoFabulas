@@ -35,3 +35,20 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/*Estilo global*/
+ion-app, ion-content {
+    --background: url('../src/assets/img/fondo/fondo.jpg') no-repeat center center / cover;
+}
+
+ion-header {
+    --background: #BF026D; /* Fondo transparente */
+    --ion-toolbar-background: #BF026D; /* Fondo transparente para la toolbar */
+    --ion-toolbar-border-color: #BF026D; /* Elimina el borde */    
+}
+
+
+ion-header ion-title {
+    color: white;
+}

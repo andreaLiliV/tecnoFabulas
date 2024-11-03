@@ -1,0 +1,19 @@
+ion-content {
+    --background: none; /* Elimina cualquier fondo global */ 
+ 
+}
+
+.alinear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-direction: row;
+    background-color: #BF026D;
+    height: 60px;
+}
+
+ion-title {
+    text-align: center;
+    font-weight: bold;
+}

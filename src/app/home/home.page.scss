@@ -1,27 +1,72 @@
-#container {
+.titulo {
+  font-family: 'Franklin Gothic Medium';
+  color:white;  
+  display: flex;
+  justify-content: center;
+}
+
+.alinear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  flex-direction: row;
+  background-color: #BF026D;
+  height: 60px;
+}
+
+ion-title {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  font-weight: bold;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-card {
+  background-color: #f9b5f8; /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Opcional: agrega un efecto de desenfoque detrás */
+  box-shadow: none;
+  border-radius: 10%;
+  margin: 10%  auto;
+  width: 90%;   
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.scale-card {
+  transition: transform 0.3s ease;
 }
 
-#container a {
-  text-decoration: none;
+.scale-card:hover {
+  transform: scale(1.1);
 }
+
+ion-card ion-input {
+  --background: transparent; /* Fondo transparente */
+  color: black; /* Color de texto en naranja oscuro */
+}
+
+ion-card input {
+  background-color: transparent; /* Fondo transparente para navegadores que no usan variables CSS */
+  color: black; /* Color de texto en naranja oscuro */
+}
+
+ion-card ion-label {
+  --background: #f9b5f8; /* Fondo transparente */
+  color: black /* Color de texto en naranja oscuro */
+}
+
+ion-card label {
+  background-color: #f9b5f8; /* Fondo transparente para navegadores que no usan variables CSS */
+  color: black; /* Color de texto en naranja oscuro */    
+}
+
+ion-card ion-item {
+  --background: #f9b5f8; /* Fondo transparente */
+  color: black; /* Color de texto en naranja oscuro */
+}
+
+ion-card ion-button.registro-button {
+  --background: black; /* Fondo en naranja oscuro */
+  color: white; /* Texto en blanco para buen contraste */
+}
+
+
+
+

@@ -1,0 +1,37 @@
+<!--
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>tabs</ion-title>
+  </ion-toolbar>
+</ion-header>
+-->
+
+<ion-content [fullscreen]="true">
+
+ <!--TABS--> 
+ <ion-tabs>
+  <ion-tab-bar slot="bottom">
+
+    <!--Biblioteca-->
+    <ion-tab-button tab="biblioteca">
+      <ion-icon name="library" color="light"></ion-icon>
+      <ion-label color="light">Biblioteca</ion-label>
+    </ion-tab-button>
+
+    <!--Géneros-->
+    <ion-tab-button tab="generos">
+      <ion-icon name="list" color="light"></ion-icon>
+      <ion-label color="light">Géneros</ion-label>
+    </ion-tab-button>
+
+     <!--Perfil-->
+     <ion-tab-button tab="perfil">
+      <ion-icon name="person" color="light"></ion-icon>
+      <ion-label color="light">Perfil</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+ </ion-tabs>
+ <!--FIN TABS-->
+  
+</ion-content>
