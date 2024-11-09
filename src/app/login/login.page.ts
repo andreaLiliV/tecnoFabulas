@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { DBTaskService } from '../dbtask.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,12 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   //variables
-  usuarioEmail: string = "";
-  contrasena: string = "";
-  usuarioEmailInvalido: boolean = false;
-  passwordInvalido: boolean = false;
+  usuario: string = "";
+  password: string = "";
+  //usuarioEmailInvalido: boolean = false;
+  //passwordInvalido: boolean = false;
 
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router, private alertController: AlertController, private dbtask: DBTaskService) { }
 
   ngOnInit() {
   }
@@ -42,12 +43,43 @@ async mensajeAlerta(mensaje: string) {
     return /^[0-9]{4}$/.test(contrasena);
   }
 
+
+  //función asincrona base de datos
+  async presentAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Mensaje',
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
+  async iniciarSesion() {
+    const usuario = await this.dbtask.validarUsuario(this.usuario, this.password);
+    if (usuario) {
+      // Usuario válido, realizar acciones de inicio de sesión
+      let NavigationExtras: NavigationExtras = {
+        state:{
+          usuarioEnviado: this.usuario,
+          passwordEnviado: this.password
+        }
+
+      } 
+      this.router.navigate(['/tabs/perfil'], NavigationExtras);
+    } else {
+      // Usuario inválido, mostrar mensaje de error
+      this.presentAlert('Credenciales inválidas');
+    }
+  }
+
   
   
 
 
 //Método iniciarSesion()
-iniciarSesion(){
+/*iniciarSesion(){
 
   //Verificar campos (ARREGLAR)
     //UsuarioEmail
@@ -74,7 +106,9 @@ iniciarSesion(){
       this.contrasena= "";
 
   }
-}
+}*/
+
+
 
 //Método Registrarse()
 registrar(){
