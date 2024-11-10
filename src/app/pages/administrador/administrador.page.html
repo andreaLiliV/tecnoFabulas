@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">administrador</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+
+    <!--ENCABEZADO-->
+    <ion-row class="header-row">
+      <ion-col class="id-col"><strong>Id</strong></ion-col>
+      <ion-col class="columna"><strong>Nombre</strong></ion-col>
+      <ion-col class="columna"><strong>Apellido</strong></ion-col>
+      <ion-col class="columna"><strong>Usuario</strong></ion-col> 
+      <ion-col class="icono-col">i</ion-col> 
+      <ion-col class="icono-col">i</ion-col>     
+    </ion-row>
+
+    <!--FILAS DE USUARIOS-->
+    <ion-row *ngFor="let usuario of usuarios">
+      <ion-col class="id-col">{{ usuario.id }}</ion-col>
+      <ion-col class="columna">{{ usuario.nombre }}</ion-col>
+      <ion-col class="columna">{{ usuario.apellido }}</ion-col>
+      <ion-col class="columna">{{ usuario.usuario}}</ion-col> 
+
+      <ion-col class="icono-col">        
+          <ion-icon name="trash" color="light" (click)="eliminarUsuario(usuario.id)"></ion-icon>           
+      </ion-col> 
+
+      <ion-col class="icono-col"><ion-icon name="pencil" color="light" (click)="editarUsuario(usuario)"></ion-icon></ion-col>    
+    </ion-row>
+  </ion-grid>
+
+    <!--FORMULARIO PARA EDITAR (sólo visible cuando se selecciona un usuario para editar)-->
+    <div *ngIf="usuarioEditar.id">
+
+      <!--Nuevo campo nombre-->
+      <ion-item>
+        <ion-label position="floating">Nombre: </ion-label>
+        <ion-input [(ngModel)]="usuarioEditar.nombre"></ion-input>
+      </ion-item>
+
+       <!--Nuevo campo apellido-->
+       <ion-item>
+        <ion-label position="floating">Apellido: </ion-label>
+        <ion-input [(ngModel)]="usuarioEditar.apellido"></ion-input>
+      </ion-item>
+
+      <!--Nuevo campo usuario-->
+      <ion-item>
+        <ion-label position="floating">Usuario: </ion-label>
+        <ion-input [(ngModel)]="usuarioEditar.usuario"></ion-input>
+      </ion-item>
+
+      <!--Botón modificar-->
+      <ion-button expand="full" (click)="modificarUsuario()">Modificar</ion-button>      
+
+    </div>  
+
+</ion-content>

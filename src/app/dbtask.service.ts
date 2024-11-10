@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DBTaskService {
 
   public db!: SQLiteObject;
+  //usuarios: any[] = [];
 
     // observable
     private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -53,6 +54,22 @@ export class DBTaskService {
 
    }//fin createTables
 
+   //función listar todos los usuarios
+   listarUsuarios() {
+    return this.db.executeSql('SELECT * FROM usuarios', [])
+      .then((res) => {
+        let usuarios = [];
+        for (let i=0; i<res.rows.length; i++) {
+          usuarios.push(res.rows.item(i));
+        }
+        return usuarios;
+
+      }).catch(e => {
+        console.error('Error al listar usuarios', e);
+        return [];
+      });
+   }
+
    //Función validarUsuario
    validarUsuario(usuario: string, password: string) {
     return this.db.executeSql('SELECT * FROM usuarios WHERE usuario = ? AND password = ?', [usuario, password])
@@ -76,8 +93,31 @@ export class DBTaskService {
     .catch(error => this.presentToast('Error al insertar usuario:'+ error));
   }
 
+  //Función para eliminar usuario
+  eliminarUsuario(id: number){
+    return this.db.executeSql('DELETE FROM usuarios WHERE id=?', [id])
+    .then((res) => {
+      if (res.rowsAffected > 0 ){
+        console.log('Usuario eliminado');
+        return true;
+      }else{
+        console.log("No se encontró el usuario a eliminar");
+        return false;
+      }
 
+    })
+    .catch((error) => {
+      console.error('Error al eliminar el usuario', error);
+      throw error;
 
+    });
+  }
+
+  //Función para modificar usuario
+  modificarUsuario(usuario: any) {
+    const query = 'UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ? WHERE id = ?';
+    return this.db.executeSql(query, [usuario.nombre, usuario.apellido, usuario.usuario, usuario.id]);
+  }
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -25,5 +25,17 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
   }
+
+  //Método Registrarse()
+mantenedor(){
+
+  //Sólo a modo de prueba  
+  let navigationExtras: NavigationExtras = {
+    state:{
+      
+    }
+  }
+  this.router.navigate(['/administrador'], navigationExtras);
+}
 
 }
