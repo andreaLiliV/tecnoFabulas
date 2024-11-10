@@ -9,11 +9,12 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 export class PerfilPage implements OnInit {
 
   usuarioRecibido: string ="";
+  //usuario: string = '';
   
 
   constructor(private activerouter: ActivatedRoute, private router: Router) { 
 
-    this.activerouter.queryParams.subscribe(params =>{
+   this.activerouter.queryParams.subscribe(params =>{
 
       if(this.router.getCurrentNavigation()?.extras?.state){
         this.usuarioRecibido = this.router.getCurrentNavigation()?.extras?.state?.['usuarioEnviado'];
@@ -24,6 +25,13 @@ export class PerfilPage implements OnInit {
   }
 
   ngOnInit() {
+
+   /* const nombreUsuario = localStorage.getItem('usuario');
+
+    if (nombreUsuario){
+      this.usuario = nombreUsuario;
+    }*/
+
   }
 
   //Método Registrarse()

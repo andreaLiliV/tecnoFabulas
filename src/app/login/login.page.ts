@@ -58,6 +58,7 @@ async mensajeAlerta(mensaje: string) {
 
   async iniciarSesion() {
     const usuario = await this.dbtask.validarUsuario(this.usuario, this.password);
+    localStorage.setItem('usuario', this.usuario);
     if (usuario) {
       // Usuario válido, realizar acciones de inicio de sesión
       let NavigationExtras: NavigationExtras = {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Pagina404Page } from './pages/pagina404/pagina404.page';
 
 const routes: Routes = [
   {    
@@ -45,6 +46,14 @@ const routes: Routes = [
     path: 'administrador',
     loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/pagina404/pagina404.module').then( m => m.Pagina404PageModule)
+  },
+  /*{
+    path: '**',
+    component: Pagina404Page
+  },*/
   
 ];
 

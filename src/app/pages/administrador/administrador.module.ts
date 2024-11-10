@@ -8,12 +8,15 @@ import { AdministradorPageRoutingModule } from './administrador-routing.module';
 
 import { AdministradorPage } from './administrador.page';
 
+import { BotonRetrocesoComponent } from 'src/app/boton-retroceso/boton-retroceso.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdministradorPageRoutingModule
+    AdministradorPageRoutingModule,
+    BotonRetrocesoComponent
   ],
   declarations: [AdministradorPage]
 })
