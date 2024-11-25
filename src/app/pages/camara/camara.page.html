@@ -1,0 +1,88 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Captura de Imagen</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+  <ion-header class="alinear">  
+    <app-boton-retroceso></app-boton-retroceso>         
+    <ion-title>Mis Datos</ion-title>           
+  </ion-header>
+  <!--
+  <ion-button expand="full" (click)="captureImage()">
+    Tomar Foto
+  </ion-button> 
+
+  <div *ngIf="capturedImage" class="imagen-container">
+    <img [src]="capturedImage" alt="Imagen capturada"/>
+  </div>
+  <h1 class="titulo">Usuario: {{usuario}} </h1>
+  <h1 class="titulo">Usuario: {{password}} </h1>
+-->
+  <ion-card>
+    <div *ngIf="capturedImage" class="imagen-container">
+      <img [src]="capturedImage" alt="Imagen capturada"/>
+    </div>
+    <ion-button shape="round" (click)="captureImage()">
+      <ion-icon slot="start" name="id-card"></ion-icon>
+      Tomar Foto
+    </ion-button> 
+    <ion-card-header>
+
+      <ion-card-title>Datos del usuario</ion-card-title>
+      <ion-card-content>
+        <div *ngFor="let usuario of usuarios">    
+          <p class="table-cell">Nombre: {{ usuario.nombre }}</p>     
+          <p class="table-cell">Apellido: {{ usuario.apellido }}</p>  
+          <p class="table-cell">Usuario: {{ usuario.usuario }}</p>  
+          <p class="table-cell">Fecha nacimiento: {{ usuario.fecha_nacimiento | date:'dd/MM/yyyy' }}</p>
+        </div> 
+      </ion-card-content>
+    </ion-card-header>
+   
+  </ion-card>
+
+
+<!--
+  <div *ngFor="let usuario of usuarios">    
+    <h1 class="table-cell">{{ usuario.nombre }}</h1>
+    <h1 class="table-cell">{{ usuario.apellido }}</h1>
+    <h1 class="table-cell">{{ usuario.usuario }}</h1>   
+    <h1 class="table-cell">{{ usuario.fecha_nacimiento | date:'dd/MM/yyyy' }}</h1>
+  </div>  
+
+
+ <!--
+  <ion-list *ngFor="let usuario of usuarios" style="background-color: #BF026D;" class="rounded-list">
+    <ion-item class="custom-list">
+      <ion-icon aria-hidden="true" name="accessibility" slot="start" color="light"></ion-icon>
+      <ion-label> Nombre: {{ usuario.nombre usuario.apellido }}</ion-label>
+    </ion-item>
+
+    <ion-item class="custom-list">
+      <ion-icon aria-hidden="true" name="happy" slot="start" color="light"></ion-icon>
+      <ion-label>Usuario: {{ usuario.usuario}}</ion-label>
+    </ion-item>         
+    
+    <ion-item  class="custom-list">
+      <ion-icon aria-hidden="true" name="thumbs-up" slot="start" color="light"></ion-icon>
+      <ion-label>Fecha Nacimiento: {{ usuario.fecha_nacimiento | date:'dd/MM/yyyy' }}</ion-label>
+    </ion-item>
+
+  </ion-list>
+ 
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,41 @@
+/*.colorletra {
+    color: blanchedalmond;
+}
+*/
+h2 {
+    color:black;
+}
+.alinear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-direction: row;
+    background-color: #BF026D;
+    height: 60px;
+  }
+  
+  ion-title {
+    text-align: center;
+    font-weight: bold;
+  }
+
+
+.list-content {    
+    margin: 20%  auto;
+    width: 90%; 
+    border-radius: 15px;
+    background-color: #f49cce4a;
+}
+
+.rounded-list {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #f49cce4a;
+    
+}
+
+.custom-list {
+    --background: #f49cce4a;
+    color: white;
+}

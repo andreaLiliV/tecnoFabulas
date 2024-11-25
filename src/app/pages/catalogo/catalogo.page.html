@@ -1,0 +1,20 @@
+
+<ion-content [fullscreen]="true">
+  <ion-header class="alinear">  
+    <app-boton-retroceso></app-boton-retroceso>         
+    <ion-title>Catálogo</ion-title>           
+  </ion-header>
+
+  <!--<h3>{{ id_usuario }}</h3>-->
+  
+  <div class="horizontal-scroll">
+    <div class="libro" *ngFor="let libro of libros">
+      <img [src]="libro.imagen"/>      
+      <h3>{{ libro.titulo}}</h3>
+      <h3>{{ libro.autor }}</h3>      
+      <ion-button #botonAgregar expand="block" (click)="agregarABibiloteca(id_usuario, libro.id)">Agregar</ion-button>
+    </div>
+  </div>
+
+
+</ion-content>

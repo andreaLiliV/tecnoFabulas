@@ -20,35 +20,42 @@
    </div>
 
   <!--Interpolación--> 
-  <h1 class="titulo">Usuario: {{usuarioRecibido}} </h1>
+ <!--<h1 class="titulo">Usuario: {{usuarioRecibido}} </h1>-->
+  <h1 *ngIf="!usuarioRecibido" class="titulo">Usuario: {{usuario}} </h1>
+  <h1 *ngIf="usuarioRecibido" class="titulo">Usuario: {{ usuarioAdministrador }} </h1>
+ <!-- <h1 class="titulo">Usuario: {{ usuarioRecibido }} </h1>-->
+  
   <!--<h1 class="titulo">Usuario: {{ usuario }} </h1>-->
   <div class="list-content">
 
     <ion-list style="background-color: #BF026D;" class="rounded-list">
-      <ion-item class="custom-list">
+      <ion-item routerLink="/camara" class="custom-list">
         <ion-icon aria-hidden="true" name="reader" slot="start" color="light"></ion-icon>
         <ion-label>Mis datos</ion-label>
       </ion-item>
 
-      <ion-item class="custom-list">
-        <ion-icon aria-hidden="true" name="book" slot="start" color="light"></ion-icon>
+      <ion-item routerLink="/preferidos" class="custom-list">
+        <ion-icon aria-hidden="true" name="heart" slot="start" color="light"></ion-icon>
         <ion-label>Mis lecturas</ion-label>
       </ion-item>
 
-      <ion-item class="custom-list">
-        <ion-icon aria-hidden="true" name="heart" slot="start" color="light"></ion-icon>
-        <ion-label>Calificación<noscript></noscript></ion-label>
-      </ion-item>
+      <ion-item routerLink="/autores" class="custom-list">
+        <ion-icon aria-hidden="true" name="book" slot="start" color="light"></ion-icon>
+        <ion-label>Lecturas recomendadas</ion-label>
+      </ion-item>      
       
-      <ion-item class="custom-list">
+      <ion-item routerLink="/mapa" class="custom-list">
         <ion-icon aria-hidden="true" name="thumbs-up" slot="start" color="light"></ion-icon>
-        <ion-label>Síguenos</ion-label>
+        <ion-label>Visítanos</ion-label>
       </ion-item>
 
     </ion-list>
 
 
-    <ion-button (click)="mantenedor()" expand="block" fill="solid" shape="round" class="btn-mantenedor">Mantenedor</ion-button>
+    <ion-button *ngIf="usuarioRecibido" (click)="mantenedor()" expand="block" fill="solid" shape="round" class="btn-mantenedor">
+      Administrar usuarios
+    </ion-button>
+   
 </div>
 
 </ion-content>

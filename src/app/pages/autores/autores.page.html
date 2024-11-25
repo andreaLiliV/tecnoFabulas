@@ -1,0 +1,26 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>autores</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<ion-content [fullscreen]="true">
+  <ion-header class="alinear">  
+    <app-boton-retroceso></app-boton-retroceso>         
+    <ion-title>Lecturas Recomendadas</ion-title>           
+  </ion-header>
+  
+  <div class="list-content">
+    <ion-list class="rounded-list">
+      <ion-item *ngFor="let user of users" class="custom-list">
+        <ion-label>
+          <h2>{{ user.title }}</h2>
+          <p *ngIf="user.author_name">Autor(es): {{ user.author_name.join('. ')}}</p>
+          <p *ngIf="!user.author_name">Autor(es): Desconocido</p>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

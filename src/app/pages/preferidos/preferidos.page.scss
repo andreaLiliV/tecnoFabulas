@@ -1,0 +1,44 @@
+.alinear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  flex-direction: row;
+  background-color: #BF026D;
+  height: 60px;
+}
+
+ion-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;  
+
+}
+
+
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #dddd;
+  
+  }

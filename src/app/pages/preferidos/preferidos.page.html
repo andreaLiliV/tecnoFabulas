@@ -1,0 +1,60 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>preferidos</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content [fullscreen]="true"> 
+
+  <ion-header class="alinear">  
+    <app-boton-retroceso></app-boton-retroceso>         
+    <ion-title>Mis Lecturas</ion-title>           
+  </ion-header>
+
+
+  <div class="table-container"> 
+    <p></p>
+    <p></p>
+    <p></p>
+    <ion-button routerLink="/catalogo" shape="round" class="button-container">
+      <ion-icon slot="start" name="library"></ion-icon>
+      Ir al Catálago
+    </ion-button> 
+    <p></p>
+    <p></p>
+    <p></p>
+  
+
+    <!--<div *ngFor="let libro of libros" class="table-row">    
+      <!--<div class="table-cell">{{ libro.id }}</div>    
+      <div class="table-cell">{{ libro.id_usuario }}</div>   
+      <div class="table-cell">{{ libro.id_libro }}</div>  
+      <div class="table-cell">{{ getTituloLibro(libro.id_libro)}}</div>
+      <div class="table-cell"><ion-icon name="trash" color="light" (click)="eliminarLibroUsuario(libro.id)"></ion-icon></div>
+    </div>
+
+    <p></p> 
+    <p></p> -->
+
+    <div *ngFor="let libro of libros" class="table-row">    
+      <!--<div class="table-cell">{{ libro.id }}</div> -->  
+      <ng-container *ngIf="getTituloLibro(libro.id_libro) as titulo">
+        <div class="table-cell">{{ libro.id_libro}}</div>
+        <div class="table-cell">{{ titulo }}</div>
+        <div class="table-cell"><ion-icon name="trash" color="light" (click)="eliminarLibroUsuario(libro.id)"></ion-icon></div>
+
+      </ng-container>        
+      
+    </div>
+    <!--
+    <p></p> 
+    <p></p>
+     
+    <div *ngFor="let libroA of librosAgregados" class="table-row">    
+      <div class="table-cell">{{ libroA.id }}</div> 
+      <div class="table-cell">{{ libroA.titulo }}</div>  
+    </div>
+  -->   
+      
+  </div>
+</ion-content>

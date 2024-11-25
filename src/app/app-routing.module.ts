@@ -47,9 +47,31 @@ const routes: Routes = [
     loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
   },
   {
+    path: 'catalogo',
+    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+  },
+  
+  {
+    path: 'camara',
+    loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule)
+  },  
+  {
+    path: 'mapa',
+    loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
+  },  
+  {
+    path: 'autores',
+    loadChildren: () => import('./pages/autores/autores.module').then( m => m.AutoresPageModule)
+  },  
+  {
+    path: 'preferidos',
+    loadChildren: () => import('./pages/preferidos/preferidos.module').then( m => m.PreferidosPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina404/pagina404.module').then( m => m.Pagina404PageModule)
   },
+  
   /*{
     path: '**',
     component: Pagina404Page

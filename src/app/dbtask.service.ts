@@ -39,6 +39,7 @@ export class DBTaskService {
    //funcion para crear tablas
    private createTables() {
 
+    //TABLA USUARIOS
     this.db.executeSql(
       `CREATE TABLE IF NOT EXISTS usuarios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -50,9 +51,36 @@ export class DBTaskService {
         fecha_nacimiento TEXT
       )`, [])
     .then(() => this.presentToast('Table created'))  //si todo está bien, tabla creada con éxito
-    .catch(error => this.presentToast('Error creating table' + error));  //si no se logra crear la tabla, saldrá el error
+    .catch(error => this.presentToast('Error creating table' + error));  
+    
+    /*TABLA LIBROS
+    this.db.executeSql(
+      `CREATE TABLE IF NOT EXISTS libros (
+        id_libro INTEGER PRIMARY KEY AUTOINCREMENT,
+        titulo TEXT,
+        autor TEXT,
+        descripcion TEXT,
+        imagen TEXT        
+      )`, [])
+    .then(() => this.presentToast('Table created'))  //si todo está bien, tabla creada con éxito
+    .catch(error => this.presentToast('Error creating table' + error)); */
+    
+     //TABLA BIBLIOTECAUSUARIOS
+     this.db.executeSql(
+      `CREATE TABLE IF NOT EXISTS bibliotecaUsuario (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_usuario INTEGER NOT NULL,
+        id_libro INTEGER NOT NULL,                   
+        FOREIGN KEY (id_usuario) REFERENCES usuarios (id)                     
+      )`, [])
+    .then(() => this.presentToast('Table created'))  //si todo está bien, tabla creada con éxito
+    .catch(error => this.presentToast('Error creating table' + error));
+   
+
 
    }//fin createTables
+
+   //USUARIOS
 
    //función listar todos los usuarios
    listarUsuarios() {
@@ -68,6 +96,23 @@ export class DBTaskService {
         console.error('Error al listar usuarios', e);
         return [];
       });
+   }
+
+   listarUsuarioLogueado(usuario: string, password: string) {
+
+    return this.db.executeSql('SELECT * FROM usuarios WHERE usuario = ? AND password = ?', [usuario, password])
+      .then((res) => {
+        let usuarios = [];
+        for (let i=0; i<res.rows.length; i++) {
+          usuarios.push(res.rows.item(i));
+        }
+        return usuarios;
+
+      }).catch(e => {
+        console.error('Error al listar usuarios', e);
+        return [];
+      });
+
    }
 
    //Función validarUsuario
@@ -118,6 +163,128 @@ export class DBTaskService {
     const query = 'UPDATE usuarios SET nombre = ?, apellido = ?, usuario = ? WHERE id = ?';
     return this.db.executeSql(query, [usuario.nombre, usuario.apellido, usuario.usuario, usuario.id]);
   }
+
+  //Función para recuperar id
+  obtenerIdUsuario(username: string){
+    const query = 'SELECT id FROM usuarios WHERE usuario = ?';
+    return this.db.executeSql(query, [username]);
+  }
+
+
+  /*LIBROS
+  insertLibro() {
+    const queryInsert = 'INSERT INTO libros (titulo, autor, descripcion, imagen) VALUES (?, ?, ?, ?)';
+    
+    const librosPredefinidos = [
+      { titulo: 'Libro 1', autor: 'Autor 1', descripcion: 'Descripcion 1', imagen: '../../../assets/img/libros/anubis.jpg'},
+      { titulo: 'Libro 2', autor: 'Autor 2', descripcion: 'Descripcion 2', imagen: '../../../assets/img/libros/carbono_modificado.jpg'},
+      { titulo: 'Libro 3', autor: 'Autor 3', descripcion: 'Descripcion 3', imagen: '../../../assets/img/libros/neuromancer.jpg'},
+      { titulo: 'Libro 4', autor: 'Autor 4', descripcion: 'Descripcion 4', imagen: '../../../assets/img/libros/diario_estrellas.jpg'},
+      { titulo: 'Libro 5', autor: 'Autor 5', descripcion: 'Descripcion 5', imagen: '../../../assets/img/libros/eternidad.jpg'},
+      { titulo: 'Libro 6', autor: 'Autor 6', descripcion: 'Descripcion 6', imagen: '../../../assets/img/libros/ovejas_electricas.jpg'},
+      { titulo: 'Libro 7', autor: 'Autor 7', descripcion: 'Descripcion 7', imagen: '../../../assets/img/libros/leyenda.jpg'},
+      { titulo: 'Libro 8', autor: 'Autor 8', descripcion: 'Descripcion 8', imagen: '../../../assets/img/libros/leviathan.jpg'},
+      { titulo: 'Libro 9', autor: 'Autor 9', descripcion: 'Descripcion 9', imagen: '../../../assets/img/libros/maquina_tiempo.jpg'},
+    ];
+
+    let resultado;
+
+    librosPredefinidos.forEach((libro) => {
+      resultado = this.db.executeSql(queryInsert, [libro.titulo, libro.autor, libro.descripcion, libro.imagen]);
+    });
+    return resultado;  //retorna la última ejecución del executeSql
+
+  }*/
+
+
+   /*función listar todos los libros
+   listarLibros() {
+    return this.db.executeSql('SELECT * FROM libros', [])
+      .then((res) => {
+        let libros = [];
+        for (let i=0; i<res.rows.length; i++) {
+          libros.push(res.rows.item(i));
+        }
+        return libros;
+
+      }).catch(e => {
+        console.error('Error al listar usuarios', e);
+        return [];
+      });
+   }*/
+
+   //Agregar libro a Biblioteca
+   agregarLibroBiblioteca(id_usuario: number, id_libro: number) {
+    
+    const query = 'INSERT INTO bibliotecaUsuario (id_usuario, id_libro) VALUES (?, ?)';
+    return this.db.executeSql(query, [id_usuario, id_libro])
+    .then(() => this.presentToast('Libro insertado correctamente'))
+    .catch(error => this.presentToast('Error al insertar libro:'+ error));
+
+   }
+
+ 
+
+   //Obtener Si existe Libros agregado por el  usuario
+   listarLibrosUsuario(id_usuario: number){
+    const query = 'SELECT * FROM bibliotecaUsuario WHERE id_usuario = ?';
+    //return this.db.executeSql(query, [id_usuario]);
+    return this.db.executeSql(query, [id_usuario])
+      .then((res) => {
+        let libros = [];
+        for (let i=0; i<res.rows.length; i++) {
+          libros.push(res.rows.item(i));
+        }
+        return libros;
+
+      }).catch(e => {
+        console.error('Error al listar libros', e);
+        return [];
+      });
+
+   }
+
+
+   validarLibro(usuario_id: number, libro_id: number) {
+    const query = 'SELECT id_libro FROM bibliotecaUsuario WHERE id_usuario = ? AND id_libro = ?';
+    return this.db.executeSql(query, [usuario_id, libro_id]);
+      
+  }
+
+  //Función para eliminar libro
+  eliminarLibro(id: number){
+    return this.db.executeSql('DELETE FROM bibliotecaUsuario WHERE id=?', [id])
+    .then((res) => {
+      if (res.rowsAffected > 0 ){
+        console.log('Libro eliminado');
+        return true;
+      }else{
+        console.log("No se encontró el Libro a eliminar");
+        return false;
+      }
+
+    })
+    .catch((error) => {
+      console.error('Error al eliminar el Libro', error);
+      throw error;
+
+    });
+  }
+
+
+   /*Obtener libros seleccionados por el usuario
+   obtenerLibrosUsuario(usuarioId: number){
+    const query = 'SELECT libros.* FROM bibliotecaUsuario INNER JOIN libros ON bibliotecaUsuario.id_libro = id_libro WHERE bibliotecaUsuario.id_usuario = ?';
+    return this.db.executeSql(query, [usuarioId])
+    .then((res) => {
+      let libros = [];
+      for (let i=0; i < res.rows.length; i++) {
+        libros.push(res.rows.item(i));
+      }
+      return libros;
+    }).catch(e => console.error('Error al obtener libros del usuario'));
+    
+   }*/
 
 
 

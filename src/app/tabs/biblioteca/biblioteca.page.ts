@@ -25,4 +25,16 @@ mostrarLibro(){
   this.router.navigate(['/bookreader'], navigationExtras);
 }
 
+agregarLibro(){
+
+  //Sólo a modo de prueba  
+  let navigationExtras: NavigationExtras = {
+    state:{
+      
+    }
+  }
+  this.router.navigate(['/catalogo'], navigationExtras);
+
+}
+
 }

@@ -13,6 +13,9 @@ export class LoginPage implements OnInit {
   //variables
   usuario: string = "";
   password: string = "";
+  id_usuario!: number;
+  usuarios: any[] = [];
+  siAdmin: boolean = false;
   //usuarioEmailInvalido: boolean = false;
   //passwordInvalido: boolean = false;
 
@@ -55,27 +58,74 @@ async mensajeAlerta(mensaje: string) {
     await alert.present();
   }
 
+  //función para listar usuarios
+  ionViewWillEnter() {
+    this.dbtask.listarUsuarios()
+    .then((usuarios) => {
+      this.usuarios = usuarios;
+
+    }).catch((error) => {
+      console.error('Error al cargar usuarios', error);
+    });
+  }
+
 
   async iniciarSesion() {
-    const usuario = await this.dbtask.validarUsuario(this.usuario, this.password);
-    localStorage.setItem('usuario', this.usuario);
-    if (usuario) {
-      // Usuario válido, realizar acciones de inicio de sesión
+
+    this.siAdmin = false;
+
+    if(this.usuario == 'admin' && this.password == '1234'){
+
+      this.siAdmin = true;
+      alert('Te has logueado como usuario administrador');
+
+      //usarios con rol usuario administrador
+      localStorage.setItem('usuarioAdmin', this.usuario);
+      localStorage.setItem('passwordAdmin', this.password);
       let NavigationExtras: NavigationExtras = {
         state:{
-          usuarioEnviado: this.usuario,
-          passwordEnviado: this.password
+          //usuarioEnviado: this.usuario,
+          //passwordEnviado: this.password
+          usuarioAdminEnviado: this.siAdmin
         }
 
       } 
+      this.usuario = "";
+      this.password = "";
       this.router.navigate(['/tabs/perfil'], NavigationExtras);
-    } else {
-      // Usuario inválido, mostrar mensaje de error
-      this.presentAlert('Credenciales inválidas');
+      
     }
-  }
+    else{ //loguearse como usuario normal
 
+      const usuario = await this.dbtask.validarUsuario(this.usuario, this.password);
+      //usuarios con rol usuario normal
+      localStorage.setItem('usuario', this.usuario);
+      localStorage.setItem('password', this.password);    
+      
+      if (usuario) {
   
+        // Usuario válido, realizar acciones de inicio de sesión
+        let NavigationExtras: NavigationExtras = {
+          state:{
+            //usuarioEnviado: this.usuario,
+            //passwordEnviado: this.password
+            usuarioAdminEnviado: this.siAdmin
+          }
+  
+        } 
+        this.usuario = "";
+        this.password = "";
+        this.router.navigate(['/tabs/perfil'], NavigationExtras);
+      } else {
+        // Usuario inválido, mostrar mensaje de error
+        this.presentAlert('Credenciales inválidas');
+      }
+
+
+    }  
+
+
+  } 
   
 
 
@@ -116,8 +166,7 @@ registrar(){
 
   //Sólo a modo de prueba  
   let navigationExtras: NavigationExtras = {
-    state:{
-      
+    state:{      
     }
   }
   this.router.navigate(['/home'], navigationExtras);
