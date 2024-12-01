@@ -24,7 +24,7 @@
 
   -->
   
-  <div class="grid-container">
+ <div class="grid-container">
 
     <ion-card class="grid-item"><img src="../../../assets/img/libros/anubis.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Las puertas anu..</ion-card-title></ion-card>
     <ion-card class="grid-item"><img src="../../../assets/img/libros/carbono_modificado.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Carbono modificado</ion-card-title></ion-card>
@@ -37,6 +37,27 @@
     <ion-card class="grid-item"><img src="../../../assets/img/libros/maquina_tiempo.jpg" (click)="mostrarLibro()"><ion-card-title class="titulo">Máquina del tiempo</ion-card-title></ion-card>
     <ion-card class="grid-item"><img src="../../../assets/img/libros/agregar.png" (click)="agregarLibro()"><ion-card-title class="titulo">AGREGAR</ion-card-title></ion-card>
   </div>
+<!--
+  <div *ngFor="let libro of libros" class="grid-container">
+
+    <ng-container *ngIf="getTituloLibro(libro.id_libro) as titulo">
+      <ion-card class="grid-item"><img src="../../../assets/img/libros/anubis.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">{{titulo}}</ion-card-title></ion-card>
+
+    </ng-container>
+
+  </div>
+
+
+  <div *ngFor="let libro of libros" class="table-row">    
+    <!--<div class="table-cell">{{ libro.id }}</div>  
+    <ng-container *ngIf="getTituloLibro(libro.id_libro) as titulo">
+      <div class="table-cell">{{ libro.id_libro}}</div>
+      <div class="table-cell">{{ titulo }}</div>
+      <div class="table-cell"><ion-icon name="trash" color="light" (click)="eliminarLibroUsuario(libro.id)"></ion-icon></div>
+
+    </ng-container>        
+    
+  </div>-->
 
   
   

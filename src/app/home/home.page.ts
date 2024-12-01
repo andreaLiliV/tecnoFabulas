@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { DBTaskService } from '../dbtask.service';
+//import { DBTaskService } from '../dbtask.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
@@ -26,18 +26,18 @@ export class HomePage {
 
   constructor(private alertController: AlertController,
               private router: Router,
-              private activateroute: ActivatedRoute,
-              private dbtask: DBTaskService
+              private activateroute: ActivatedRoute
+              //private dbtask: DBTaskService
   ) { }    
   
   ngOnInit() {
 
-    this.dbtask.getIsDBReady().subscribe(isReady => {
+    /*this.dbtask.getIsDBReady().subscribe(isReady => {
       this.isDBReady = isReady;
       if (isReady) {
         // Aquí puedes llamar a funciones para cargar datos, etc. desde la base de datos
       }
-    });
+    });*/
   }
   
   //Método para mensaje
@@ -60,7 +60,14 @@ async presentAlert(message: string) {
   await alert.present();
 }
 
+ingresar(){
+
+  this.mensajeActual("Los campos no pueden estar vacíos");
+
+}
+
 //Método ingresar
+/*
 ingresar(){
 
   if(this.nombre.length == 0 || this.apellido.length == 0 || this.usuario.length == 0 || this.password.length == 0 || this.educacion.length == 0 || this.fecha_nacimiento.length==0){
@@ -69,7 +76,7 @@ ingresar(){
   else{
     this.mensajeActual("Se ha registrado correctamente");
 
-    this.guardarDatos();  
+    //this.guardarDatos();  
     this.nombre = "";
     this.apellido = "";
     this.usuario = "";
@@ -77,8 +84,11 @@ ingresar(){
 
   }
 
-}
+  
 
+}
+  */
+/*
 guardarDatos(){
  
 
@@ -93,6 +103,7 @@ guardarDatos(){
       });
 
 }
+*/      
   
 
 }

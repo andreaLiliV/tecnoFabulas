@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { DBTaskService } from '../dbtask.service';
+//import { DBTaskService } from '../dbtask.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   //usuarioEmailInvalido: boolean = false;
   //passwordInvalido: boolean = false;
 
-  constructor(private router: Router, private alertController: AlertController, private dbtask: DBTaskService) { }
+  constructor(private router: Router, private alertController: AlertController ) { } //private dbtask: DBTaskService
 
   ngOnInit() {
   }
@@ -47,7 +47,7 @@ async mensajeAlerta(mensaje: string) {
   }
 
 
-  //función asincrona base de datos
+  //función asincrona muestra alerta de error
   async presentAlert(message: string) {
     const alert = await this.alertController.create({
       header: 'Mensaje',
@@ -57,7 +57,7 @@ async mensajeAlerta(mensaje: string) {
 
     await alert.present();
   }
-
+/*
   //función para listar usuarios
   ionViewWillEnter() {
     this.dbtask.listarUsuarios()
@@ -127,8 +127,11 @@ async mensajeAlerta(mensaje: string) {
 
   } 
   
+*/
 
 
+
+//OCUPAR ESTA (ARREGLAR)
 //Método iniciarSesion()
 /*iniciarSesion(){
 
@@ -160,6 +163,33 @@ async mensajeAlerta(mensaje: string) {
 }*/
 
 
+//función asincrónica para pruebas unitarias
+async  login() {
+  // Verificar que el campo de correo no esté vacío
+  if (!this.usuario) {
+   this.presentAlert('El campo de usuario no puede estar vacío.');
+   return;
+ }
+
+ // Validar el formato del usuario
+ if (!this.isAlphanumeric(this.usuario)) {
+   this.presentAlert('El formato del usuario es inválido.');
+   return;
+ }
+
+ // Verificar que la contraseña no esté vacía
+ if (!this.password) {
+   this.presentAlert('El campo de contraseña no puede estar vacío.');
+   return;
+ }
+
+ // Verificar que la contraseña tenga máximo 4 caracteres
+ if (this.password.length > 4) {
+   this.presentAlert('La contraseña no puede tener más de 4 caracteres.');
+   return;
+ }
+
+}
 
 //Método Registrarse()
 registrar(){

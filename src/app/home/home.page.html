@@ -14,25 +14,25 @@
     <!--Nombre-->  
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+      <ion-input type="text" [(ngModel)]="nombre" id="nombre" name="nombre"></ion-input>
     </ion-item>
 
     <!--Apellido-->
     <ion-item>
       <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+      <ion-input type="text" [(ngModel)]="apellido" id="apellido" name="apellido"></ion-input>
     </ion-item>
 
     <!--Usuario-->
     <ion-item>
       <ion-label position="floating">usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuario" id="usuario" name="usuario"></ion-input>
     </ion-item>
 
     <!--Contraseña-->
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" id="password" name="password" maxlength="50"></ion-input>
     </ion-item>
 
 
@@ -60,7 +60,7 @@
     </mat-form-field>
 
      <!-- Botón Ingresar Datos -->
-     <ion-button expand="block" fill="clear" shape="round" class="registro-button" (click)="ingresar()">Ingresar datos</ion-button> 
+     <ion-button expand="block" fill="clear" shape="round" class="registro-button" (click)="ingresar()">Ingresar datos</ion-button> <!--(click)="ingresar()"-->
 
 
     </ion-card-content>   
