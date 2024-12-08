@@ -170,26 +170,26 @@ async mensajeAlerta(mensaje: string) {
 async  login() {
   // Verificar que el campo de correo no esté vacío
   if (!this.usuario) {
-   this.mensajeError = 'El campo de usuario no puede estar vacío.'; 
-   //this.presentAlert('El campo de usuario no puede estar vacío.');
+   //this.mensajeError = 'El campo de usuario no puede estar vacío.'; 
+   this.presentAlert('El campo de usuario no puede estar vacío.');
    return;
  }
  // Validar el formato del usuario
  if (!this.isAlphanumeric(this.usuario)) {
-   this.mensajeError = 'El formato del usuario es inválido.';
-   //this.presentAlert('El formato del usuario es inválido.');
+   //this.mensajeError = 'El formato del usuario es inválido.';
+   this.presentAlert('El formato del usuario es inválido.');
    return;
  }
  // Verificar que la contraseña no esté vacía
  if (!this.password) {
-    this.mensajeError = 'El campo de contraseña no puede estar vacío.'; 
-   //this.presentAlert('El campo de contraseña no puede estar vacío.');
+    //this.mensajeError = 'El campo de contraseña no puede estar vacío.'; 
+   this.presentAlert('El campo de contraseña no puede estar vacío.');
    return;
  }
  // Verificar que la contraseña tenga máximo 4 caracteres
  if (this.password.length > 4) {
-   this.mensajeError = 'La contraseña no puede tener más de 4 caracteres.'; 
-   //this.presentAlert('La contraseña no puede tener más de 4 caracteres.');
+   //this.mensajeError = 'La contraseña no puede tener más de 4 caracteres.'; 
+   this.presentAlert('La contraseña no puede tener más de 4 caracteres.');
    return;
  }
  // Si todas las validaciones son correctas, navega a la página "perfil"
