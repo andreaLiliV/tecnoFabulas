@@ -60,15 +60,39 @@ async presentAlert(message: string) {
   await alert.present();
 }
 
+
+async ingresar(){
+  //validar que los campos no estén vacíos
+  if(this.nombre.length == 0 || this.apellido.length == 0 || this.usuario.length == 0 || this.password.length == 0){
+    await this.mensajeActual('Todos los campos son obligatorios');
+    return;
+  } 
+
+  //Validar que no haya caracteres maliciosos
+  if(this.contieneCaracteresMaliciosos(this.usuario) || this.contieneCaracteresMaliciosos(this.password)){
+    await this.mensajeActual('Se han detectado caracteres no permitidos en los datos ingresados');
+    return;
+  }
+
+  await this.mensajeActual('Registro existoso');
+}
+
+contieneCaracteresMaliciosos(input: string): boolean {
+  const patronesMaliciosos = /<|>|"|'|\/|;|--|OR|AND|\*|=%/gi;
+  return patronesMaliciosos.test(input);
+}
+
+/*
+
 ingresar(){
 
   this.mensajeActual("Los campos no pueden estar vacíos");
 
-}
+}*/
 
 //Método ingresar
-/*
-ingresar(){
+
+/*ingresar(){
 
   if(this.nombre.length == 0 || this.apellido.length == 0 || this.usuario.length == 0 || this.password.length == 0 || this.educacion.length == 0 || this.fecha_nacimiento.length==0){
     this.mensajeActual("Los campos no pueden estar vacíos");
@@ -87,7 +111,7 @@ ingresar(){
   
 
 }
-  */
+  
 /*
 guardarDatos(){
  

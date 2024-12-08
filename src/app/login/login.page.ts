@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { DomSanitizer } from '@angular/platform-browser';
 //import { DBTaskService } from '../dbtask.service';
 
 @Component({
@@ -16,10 +18,11 @@ export class LoginPage implements OnInit {
   id_usuario!: number;
   usuarios: any[] = [];
   siAdmin: boolean = false;
+  mensajeError!: string;
   //usuarioEmailInvalido: boolean = false;
   //passwordInvalido: boolean = false;
 
-  constructor(private router: Router, private alertController: AlertController ) { } //private dbtask: DBTaskService
+  constructor(private router: Router, private alertController: AlertController, private navCtrl: NavController, private sanitizer: DomSanitizer ) { } //private dbtask: DBTaskService
 
   ngOnInit() {
   }
@@ -167,40 +170,56 @@ async mensajeAlerta(mensaje: string) {
 async  login() {
   // Verificar que el campo de correo no esté vacío
   if (!this.usuario) {
-   this.presentAlert('El campo de usuario no puede estar vacío.');
+   this.mensajeError = 'El campo de usuario no puede estar vacío.'; 
+   //this.presentAlert('El campo de usuario no puede estar vacío.');
    return;
  }
-
  // Validar el formato del usuario
  if (!this.isAlphanumeric(this.usuario)) {
-   this.presentAlert('El formato del usuario es inválido.');
+   this.mensajeError = 'El formato del usuario es inválido.';
+   //this.presentAlert('El formato del usuario es inválido.');
    return;
  }
-
  // Verificar que la contraseña no esté vacía
  if (!this.password) {
-   this.presentAlert('El campo de contraseña no puede estar vacío.');
+    this.mensajeError = 'El campo de contraseña no puede estar vacío.'; 
+   //this.presentAlert('El campo de contraseña no puede estar vacío.');
    return;
  }
-
  // Verificar que la contraseña tenga máximo 4 caracteres
  if (this.password.length > 4) {
-   this.presentAlert('La contraseña no puede tener más de 4 caracteres.');
+   this.mensajeError = 'La contraseña no puede tener más de 4 caracteres.'; 
+   //this.presentAlert('La contraseña no puede tener más de 4 caracteres.');
    return;
  }
+ // Si todas las validaciones son correctas, navega a la página "perfil"
+localStorage.setItem('usuario', this.usuario);
+
+this.navCtrl.navigateForward(['/tabs/perfil'], {
+  queryParams: {
+    usuario: this.usuario,
+    password: this.password
+  }
+});
 
 }
+
+
+
 
 //Método Registrarse()
 registrar(){
 
   //Sólo a modo de prueba  
-  let navigationExtras: NavigationExtras = {
-    state:{      
-    }
-  }
-  this.router.navigate(['/home'], navigationExtras);
+ // let navigationExtras: NavigationExtras = {
+    //state:{      
+    //}
+  //}
+  //this.router.navigate(['/home'], navigationExtras);
+  this.navCtrl.navigateForward(['/home']);
 }
+
+
 
 
 

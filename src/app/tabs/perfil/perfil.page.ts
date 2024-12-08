@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { DBTaskService } from '../../dbtask.service';
+//import { DBTaskService } from '../../dbtask.service';
 
 @Component({
   selector: 'app-perfil',
@@ -20,15 +20,15 @@ export class PerfilPage implements OnInit {
   
   
 
-  constructor(private activerouter: ActivatedRoute, private router: Router, private dbtask: DBTaskService) { 
+  constructor(private activerouter: ActivatedRoute, private router: Router ) { //private dbtask: DBTaskService
 
-   this.activerouter.queryParams.subscribe(params =>{
+   //this.activerouter.queryParams.subscribe(params =>{
 
-      if(this.router.getCurrentNavigation()?.extras?.state){
-        this.usuarioRecibido = this.router.getCurrentNavigation()?.extras?.state?.['usuarioAdminEnviado'];
-      }
+      //if(this.router.getCurrentNavigation()?.extras?.state){
+        //this.usuarioRecibido = this.router.getCurrentNavigation()?.extras?.state?.['usuarioAdminEnviado'];
+      //}
 
-    })
+    //})
 
   }
 
@@ -64,7 +64,7 @@ mantenedor(){
   }
   this.router.navigate(['/administrador'], navigationExtras);
 }
-
+/*
 ionViewWillEnter() {  
   this.dbtask.obtenerIdUsuario(this.usuario)
   .then((result) =>{
@@ -78,7 +78,7 @@ ionViewWillEnter() {
 
   });
     
-}
+}*/
 
 
 

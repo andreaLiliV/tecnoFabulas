@@ -39,10 +39,10 @@ describe('Home Page', () => {
 
   });
 
-  it('Verifica límite de longitud en password sean 50 caracteres', () => {
+  it('Verifica límite de longitud en password sean 4 caracteres', () => {
 
-    cy.get('input[name="password"]').type('a'.repeat(49)); //Se selecciona la caja de texto password y se intenta ingresar 49 caracteres
-    cy.get('input[name="password"]').should('have.value', 'a'.repeat(49));
+    cy.get('input[name="password"]').type('a'.repeat(3)); //Se selecciona la caja de texto password y se intenta ingresar 49 caracteres
+    cy.get('input[name="password"]').should('have.value', 'a'.repeat(3));
 
   }); 
 
@@ -62,6 +62,19 @@ describe('Home Page', () => {
 
     //Verifica el título del alert
     cy.get('ion-alert .alert-head').should('contain', 'Mensaje');   
+
+  });
+
+  it('Debería rechazar un intento de inyección de código malicioso', () => {
+
+    //Inyectar código malicioso en usuario y password
+    cy.get('input[name="usuario"]').type('<script>alert("hack")</script>');
+    cy.get('input[name="password"]').type('OR 1=1;');
+
+    //Completar el resto de los campos para que no estén vacíos
+    cy.get('input[name="nombre"]').type('Andrea');
+    cy.get('input[name="apellido"]').type('Vilches');
+    cy.get('.registro-button').click();
 
   });
 
