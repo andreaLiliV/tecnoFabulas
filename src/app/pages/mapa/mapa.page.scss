@@ -12,3 +12,25 @@
     text-align: center;
     font-weight: bold;
   }
+
+  h3 {
+    color: aliceblue;
+    font-weight: bold;
+  }
+
+  .list-content {    
+    margin: 20%  auto;
+    width: 90%; 
+    border-radius: 15px;
+}
+
+.rounded-list {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #BF026D;
+}
+
+.custom-list {
+    --background: #BF026D;
+    color: white;
+}

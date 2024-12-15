@@ -112,9 +112,16 @@ export class PreferidosPage implements OnInit {
   }
 
 
-  getTituloLibro(id_libro: number): string | null{
+  /*getTituloLibro(id_libro: number): string | null{  //string
     const libro = this.librosAgregados.find((a) => a.id === id_libro);
     return libro ? libro.titulo : null;
+    
+  }*/
+
+  getTituloLibro(id_libro: number): { titulo: string; autor: string; imagen: string} | null {  //string
+    const libro = this.librosAgregados.find((a) => a.id === id_libro);
+    return libro ? { titulo: libro.titulo, autor: libro.autor, imagen: libro.imagen }: null;
+    
   }
 
 }

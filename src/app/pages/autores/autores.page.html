@@ -1,8 +1,3 @@
-<!--<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>autores</ion-title>
-  </ion-toolbar>
-</ion-header>-->
 
 
 <ion-content [fullscreen]="true">
@@ -10,17 +5,47 @@
     <app-boton-retroceso></app-boton-retroceso>         
     <ion-title>Lecturas Recomendadas</ion-title>           
   </ion-header>
-  
-  <div class="list-content">
-    <ion-list class="rounded-list">
-      <ion-item *ngFor="let user of users" class="custom-list">
-        <ion-label>
-          <h2>{{ user.title }}</h2>
-          <p *ngIf="user.author_name">Autor(es): {{ user.author_name.join('. ')}}</p>
-          <p *ngIf="!user.author_name">Autor(es): Desconocido</p>
-        </ion-label>
 
-      </ion-item>
-    </ion-list>
-  </div>
+  
+
+  <!--RESULTADOS LIBROS BUSCADOR-->
+  <ion-header class="search">
+    <ion-toolbar>
+      <ion-title>Buscador</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar [(ngModel)]="query" placeholder="Escribe el título del libro" color="warning" (ionChange)="buscarLibros()"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <ion-list style="background-color: hsl(327, 59%, 77%);" class="rounded-list" *ngIf="hayLibros > 0">
+    <ion-list-header>
+      <ion-label class="label-titulo">Resultados de la búsqueda</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let libro of libros" class="custom-list">
+      <ion-label>
+        <h2>{{ libro.title }}</h2>
+        <!--<p>{{ libro.author_name ? libro.author_name.join(', ') : 'Autor desconocido '}}</p>-->
+        <p *ngIf="libro.author_name">Autor(es): {{ libro.author_name.join('. ')}}</p>
+        <p *ngIf="!libro.author_name">Autor(es): Desconocido</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+ <p></p>
+ <p></p>
+  <!--LISTADO DE RECOMENDACIONES-->
+  <ion-list style="background-color: hsl(327, 59%, 77%);" class="rounded-list" *ngIf="hayLibros > 0">
+    <ion-list-header>
+      <ion-label class="label-titulo">Recomendaciones</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let rec of recommendations" class="custom-list">
+      <ion-label>
+        <h2>{{ rec.title }}</h2>
+        <p>{{ rec.author_name?.join(', ')}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>

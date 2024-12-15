@@ -20,6 +20,10 @@ h2 {
     font-weight: bold;
   }
 
+  .search {
+    margin-top: 50px;    
+  }
+
 
 .list-content {    
     margin: 20%  auto;
@@ -29,13 +33,34 @@ h2 {
 }
 
 .rounded-list {
+    margin-top: 30px;
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid #f49cce4a;
+    border: 1px solid hsl(327, 59%, 77%);
     
 }
-
+  
 .custom-list {
-    --background: #f49cce4a;
+    --background: hsl(327, 59%, 77%);
+    color: black;
+} 
+
+.label-titulo {
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+
+
+ion-item {
+    margin: 10px 0;    
+}
+
+ion-input {
+    margin-right: 10px;
+}
+
+.resultado-item ion-label {
     color: white;
 }

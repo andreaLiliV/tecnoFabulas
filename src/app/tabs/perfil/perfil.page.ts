@@ -35,7 +35,8 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
 
    const nombreUsuario = localStorage.getItem('usuario');
-   const usuarioAdmin = localStorage.getItem('usuarioAdmin');   
+   const usuarioAdmin = localStorage.getItem('usuarioAdmin');
+    
    
 
     if (nombreUsuario){

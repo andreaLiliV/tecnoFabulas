@@ -16,7 +16,7 @@ export class CerrarSesionComponent  implements OnInit {
   regresar(){
 
     //localStorage.removeItem('usuario');
-    localStorage.clear();
+    //localStorage.clear();
 
     let navigationExtras: NavigationExtras = {
       state:{

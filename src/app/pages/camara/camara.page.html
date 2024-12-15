@@ -19,29 +19,79 @@
   </div>
   <h1 class="titulo">Usuario: {{usuario}} </h1>
   <h1 class="titulo">Usuario: {{password}} </h1>
--->
-  <ion-card>
-    <div *ngIf="capturedImage" class="imagen-container">
-      <img [src]="capturedImage" alt="Imagen capturada"/>
-    </div>
+
+  <div *ngIf="imagen" class="imagen-container">
+    <img [src]="imagen" class="imagen-capturada"/>
+  </div>
+
+  <ion-card>    
     <ion-button shape="round" (click)="captureImage()">
       <ion-icon slot="start" name="id-card"></ion-icon>
       Tomar Foto
     </ion-button> 
+
     <ion-card-header>
 
       <ion-card-title>Datos del usuario</ion-card-title>
       <ion-card-content>
-        <div *ngFor="let usuario of usuarios">    
+        <div *ngFor="let usuario of usuarios">          
+            
           <p class="table-cell">Nombre: {{ usuario.nombre }}</p>     
           <p class="table-cell">Apellido: {{ usuario.apellido }}</p>  
           <p class="table-cell">Usuario: {{ usuario.usuario }}</p>  
           <p class="table-cell">Fecha nacimiento: {{ usuario.fecha_nacimiento | date:'dd/MM/yyyy' }}</p>
+          
+          
         </div> 
       </ion-card-content>
     </ion-card-header>
    
-  </ion-card>
+  </ion-card>-->
+
+  <!--PROBANDO-->
+
+  <div *ngIf="imagen" class="imagen-container">
+    <img [src]="imagen" class="imagen-capturada"/>
+  </div>
+
+  <ion-button (click)="captureImage()" expand="block" fill="outline" shape="round" class="button-container">
+    <ion-icon slot="start" name="id-card"></ion-icon>
+    Tomar Foto
+  </ion-button> 
+
+  <ion-list style="background-color: hsl(327, 59%, 77%);" class="rounded-list">
+    <ion-list-header>
+      <ion-label class="label-titulo">Datos del usuario</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let usuario of usuarios" class="custom-list">
+
+      <ion-label>
+        <h2>Nombre</h2>        <!--<p>{{ libro.author_name ? libro.author_name.join(', ') : 'Autor desconocido '}}</p>-->
+        <p>{{ usuario.nombre }}</p> 
+      </ion-label>
+
+      <ion-label>
+        <h2>Apellido</h2>        <!--<p>{{ libro.author_name ? libro.author_name.join(', ') : 'Autor desconocido '}}</p>-->
+        <p>{{ usuario.apellido }}</p> 
+      </ion-label>
+
+      <ion-label>
+        <h2>Usuario</h2>        <!--<p>{{ libro.author_name ? libro.author_name.join(', ') : 'Autor desconocido '}}</p>-->
+        <p>{{ usuario.usuario }}</p> 
+      </ion-label>
+
+      <ion-label>
+        <h2>Fecha de nacimiento</h2>        <!--<p>{{ libro.author_name ? libro.author_name.join(', ') : 'Autor desconocido '}}</p>-->
+        <p>{{ usuario.fecha_nacimiento | date:'dd/MM/yyyy' }}</p> 
+      </ion-label>
+
+
+    </ion-item>
+  </ion-list>
+
+  <!--FIN DE PROBANDO-->
+
+ 
 
 
 <!--

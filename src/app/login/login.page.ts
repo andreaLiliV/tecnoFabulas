@@ -73,7 +73,7 @@ async mensajeAlerta(mensaje: string) {
   async iniciarSesion() {
 
     this.siAdmin = false;
-
+    //usuario administrador
     if(this.usuario == 'admin' && this.password == '1234'){
 
       this.siAdmin = true;

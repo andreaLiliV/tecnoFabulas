@@ -18,6 +18,7 @@ export class HomePage {
   password: string = "";  
   educacion: string = "";
   fecha_nacimiento: string = "";
+  //imagen: string = 'cero';
 
   isDBReady: boolean = false;
   
@@ -74,6 +75,7 @@ ingresar(){
     this.apellido = "";
     this.usuario = "";
     this.password = "";
+    
 
   }
 

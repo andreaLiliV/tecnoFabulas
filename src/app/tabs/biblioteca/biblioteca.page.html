@@ -4,40 +4,18 @@
     <app-logo-fabulas></app-logo-fabulas>    
     <ion-title>BIBLIOTECA</ion-title>
     <app-cerrar-sesion></app-cerrar-sesion>
-  </ion-header>
+  </ion-header> 
+ 
 
-  <!--
-  <div class="flex-container">
 
-    <div class="flex-item"><ion-card class="custom"><img src="../../../assets/img/libros/anubis.jpg"/><ion-card-title class="titulo">Card Title</ion-card-title></ion-card></div> 
-    
-    <div class="flex-item"><img src="../../../assets/img/libros/carbono_modificado.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/neuromancer.jpg" (click)="mostrarLibro()"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/diario_estrellas.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/eternidad.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/ovejas_electricas.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/leyenda.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/leviathan.jpg"/></div>
-    <div class="flex-item"><img src="../../../assets/img/libros/maquina_tiempo.jpg"/></div>
-
-  </div>
-
-  -->
-  
   <div class="grid-container">
-
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/anubis.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Las puertas anu..</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/carbono_modificado.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Carbono modificado</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/neuromancer.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Neuromancer</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/diario_estrellas.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Diario de estrellas</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/eternidad.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Hasta la eternidad</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/ovejas_electricas.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Sueñan los andr..</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/leyenda.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Soy leyenda</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/leviathan.jpg" (click)="mostrarLibro()"/><ion-card-title class="titulo">Leviathan</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/maquina_tiempo.jpg" (click)="mostrarLibro()"><ion-card-title class="titulo">Máquina del tiempo</ion-card-title></ion-card>
-    <ion-card class="grid-item"><img src="../../../assets/img/libros/agregar.png" (click)="agregarLibro()"><ion-card-title class="titulo">AGREGAR</ion-card-title></ion-card>
-  </div>
-
-  
+    <div *ngFor="let libro of libros" class="table-row">    
+      <ng-container *ngIf="getTituloLibro(libro.id_libro) as titulo">
+      <div class="grid-item"><img src="{{ titulo }}" (click)="mostrarLibro()"/></div>
+      </ng-container>   
+    </div> 
+    
+    <ion-card class="grid-itemAgregar"><img src="../../../assets/img/libros/agregar.png" (click)="agregarLibro()"><ion-card-title class="titulo">AGREGAR</ion-card-title></ion-card>
+  </div>  
   
 </ion-content>

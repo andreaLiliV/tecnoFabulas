@@ -48,7 +48,7 @@ export class DBTaskService {
         usuario TEXT,
         password TEXT,
         educacion TEXT,
-        fecha_nacimiento TEXT
+        fecha_nacimiento TEXT        
       )`, [])
     .then(() => this.presentToast('Table created'))  //si todo está bien, tabla creada con éxito
     .catch(error => this.presentToast('Error creating table' + error));  
@@ -164,6 +164,12 @@ export class DBTaskService {
     return this.db.executeSql(query, [usuario.nombre, usuario.apellido, usuario.usuario, usuario.id]);
   }
 
+  //Función para modificar imagen
+  modificarImagenUsuario(usuario: any) {
+    const query = 'UPDATE usuarios SET imagen = ? WHERE id = ?';
+    return this.db.executeSql(query, [usuario.imagen, usuario.id]);
+  }
+
   //Función para recuperar id
   obtenerIdUsuario(username: string){
     const query = 'SELECT id FROM usuarios WHERE usuario = ?';
@@ -171,49 +177,7 @@ export class DBTaskService {
   }
 
 
-  /*LIBROS
-  insertLibro() {
-    const queryInsert = 'INSERT INTO libros (titulo, autor, descripcion, imagen) VALUES (?, ?, ?, ?)';
-    
-    const librosPredefinidos = [
-      { titulo: 'Libro 1', autor: 'Autor 1', descripcion: 'Descripcion 1', imagen: '../../../assets/img/libros/anubis.jpg'},
-      { titulo: 'Libro 2', autor: 'Autor 2', descripcion: 'Descripcion 2', imagen: '../../../assets/img/libros/carbono_modificado.jpg'},
-      { titulo: 'Libro 3', autor: 'Autor 3', descripcion: 'Descripcion 3', imagen: '../../../assets/img/libros/neuromancer.jpg'},
-      { titulo: 'Libro 4', autor: 'Autor 4', descripcion: 'Descripcion 4', imagen: '../../../assets/img/libros/diario_estrellas.jpg'},
-      { titulo: 'Libro 5', autor: 'Autor 5', descripcion: 'Descripcion 5', imagen: '../../../assets/img/libros/eternidad.jpg'},
-      { titulo: 'Libro 6', autor: 'Autor 6', descripcion: 'Descripcion 6', imagen: '../../../assets/img/libros/ovejas_electricas.jpg'},
-      { titulo: 'Libro 7', autor: 'Autor 7', descripcion: 'Descripcion 7', imagen: '../../../assets/img/libros/leyenda.jpg'},
-      { titulo: 'Libro 8', autor: 'Autor 8', descripcion: 'Descripcion 8', imagen: '../../../assets/img/libros/leviathan.jpg'},
-      { titulo: 'Libro 9', autor: 'Autor 9', descripcion: 'Descripcion 9', imagen: '../../../assets/img/libros/maquina_tiempo.jpg'},
-    ];
-
-    let resultado;
-
-    librosPredefinidos.forEach((libro) => {
-      resultado = this.db.executeSql(queryInsert, [libro.titulo, libro.autor, libro.descripcion, libro.imagen]);
-    });
-    return resultado;  //retorna la última ejecución del executeSql
-
-  }*/
-
-
-   /*función listar todos los libros
-   listarLibros() {
-    return this.db.executeSql('SELECT * FROM libros', [])
-      .then((res) => {
-        let libros = [];
-        for (let i=0; i<res.rows.length; i++) {
-          libros.push(res.rows.item(i));
-        }
-        return libros;
-
-      }).catch(e => {
-        console.error('Error al listar usuarios', e);
-        return [];
-      });
-   }*/
-
-   //Agregar libro a Biblioteca
+    //Agregar libro a Biblioteca
    agregarLibroBiblioteca(id_usuario: number, id_libro: number) {
     
     const query = 'INSERT INTO bibliotecaUsuario (id_usuario, id_libro) VALUES (?, ?)';
@@ -272,22 +236,7 @@ export class DBTaskService {
   }
 
 
-   /*Obtener libros seleccionados por el usuario
-   obtenerLibrosUsuario(usuarioId: number){
-    const query = 'SELECT libros.* FROM bibliotecaUsuario INNER JOIN libros ON bibliotecaUsuario.id_libro = id_libro WHERE bibliotecaUsuario.id_usuario = ?';
-    return this.db.executeSql(query, [usuarioId])
-    .then((res) => {
-      let libros = [];
-      for (let i=0; i < res.rows.length; i++) {
-        libros.push(res.rows.item(i));
-      }
-      return libros;
-    }).catch(e => console.error('Error al obtener libros del usuario'));
-    
-   }*/
-
-
-
+   
    private async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,

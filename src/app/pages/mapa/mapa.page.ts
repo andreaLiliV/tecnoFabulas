@@ -15,7 +15,11 @@ export class MapaPage implements OnInit {
   longitude: number = -70.6154230440881;
 
   ngOnInit() {
+    this.getLocationAndShowOnMap();
   }
+
+
+  //HASTA ACÁ
 
   async getLocationAndShowOnMap() {
     try {
@@ -53,5 +57,9 @@ export class MapaPage implements OnInit {
       alert('Error al obtener la ubicación '+error);
     }
   }
+
+  //HASTA AQUÍ
+
+  
 
 }
